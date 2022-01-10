@@ -1,17 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDom from "react-dom";
+import "./index.css";
+import { data } from "./books";
+import Book from "./Book";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function BookList() {
+  return (
+    <section className="booklist">
+      {
+        data.map((book) => {
+          return <Book key={book.id} book={book} />;
+        })
+        /* <Book
+        img={firstBook.img}
+        title={firstBook.title}
+        author={firstBook.author}
+      >
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos officia
+          nesciunt, quod nulla porro eos explicabo repellat et nihil illo nemo
+          dicta perferendis, libero ad?
+        </p>
+      </Book>
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        author={secondBook.author}
+      /> */
+      }
+    </section>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+/* const Book = (props) => {
+  const { img, title, author } = props.book;
+  return (
+    <article className="book">
+      <img src={img} alt="" />
+      <h1>{title}</h1>
+      <p>{author}</p>
+       {props.children}
+    </article>
+  );
+}; */
+
+ReactDom.render(<BookList />, document.getElementById("root"));
